@@ -7,7 +7,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "timesheets" (
      "timesheet_id" serial NOT NULL,
-     "schedule" text[] NOT NULL,
+     "schedule" date[] NOT NULL,
      "hours" integer NOT NULL,
      "user_id" integer NOT NULL,
      CONSTRAINT "timesheets_pk" PRIMARY KEY ("timesheet_id")

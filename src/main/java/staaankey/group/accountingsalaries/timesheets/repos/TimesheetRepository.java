@@ -22,13 +22,12 @@ public class TimesheetRepository {
     }
 
 
-    public Integer writeTimesheet(int userId, List<LocalDate> scheduleTimesheet) {
+    public Integer writeTimesheet(int userId) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        final var SQL_INSERT = "insert into timesheets (schedule, hours, user_id) values (:schedule, :hours, :userId)";
+        final var SQL_INSERT = "insert into timesheets (hours, user_id) values (:hours, :userId)";
 
         jdbcTemplate.update(SQL_INSERT, new MapSqlParameterSource()
-                        .addValue("schedule", scheduleTimesheet)
                         .addValue("hours", 6)
                         .addValue("userId", userId), keyHolder, new String[] {"timesheet_id"});
 
