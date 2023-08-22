@@ -7,6 +7,8 @@ import staaankey.group.accountingsalaries.timesheets.service.TimesheetService;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 @RestController("/timesheet")
 public class TimesheetController {
@@ -31,5 +33,27 @@ public class TimesheetController {
                                                      @RequestParam int month)
     {
         return timesheetService.weekendCount(year, month, username);
+    }
+
+
+    @GetMapping("/displayTimesheet")
+    public String displayUserTimesheet(@RequestParam String username,
+                                       @RequestParam int year,
+                                       @RequestParam int month
+    ) {
+        HashMap<LocalDate, Integer> jcbc = timesheetService.weekendCount(year, month, username);
+        StringBuilder stringMapTable = new StringBuilder();
+        stringMapTable.append("<table>");
+
+        Iterator it = jcbc.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            stringMapTable.append("<tr><td>" + pair.getKey() + "</td><td>" + pair.getValue() + "</td></tr>");
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+
+        String mapTable = stringMapTable.toString();
+        return mapTable;
     }
 }

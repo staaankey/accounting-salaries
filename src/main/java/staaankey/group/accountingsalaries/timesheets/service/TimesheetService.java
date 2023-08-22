@@ -29,7 +29,7 @@ public class TimesheetService {
         calendar.set(year, month - 1, 1);
         int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int weekend = 0;
-        for (int i= 1; i<= daysInMonth; i++) {
+        for (int i = 1; i<= daysInMonth; i++) {
             calendar.set(year, month - 1, i);
             int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
             if (dayOfWeek != Calendar.SUNDAY) {
