@@ -9,6 +9,7 @@ import staaankey.group.accountingsalaries.registration.entity.User;
 import staaankey.group.accountingsalaries.registration.util.UserRowMapper;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -22,13 +23,18 @@ public class UserRepository {
 
     public User getUser(String username) {
 
-        String sql = "SELECT * FROM users WHERE login=:username";
+        final String sql = "SELECT * FROM users WHERE login=:username";
 
         SqlParameterSource param = new MapSqlParameterSource("username", username);
 
         User result = jdbcTemplate.queryForObject(sql, param, BeanPropertyRowMapper.newInstance(User.class));
 
         return result;
+    }
+
+    public List<User> getUsers() {
+        final var GET_ALL_USERS = "SELECT * FROM users";
+        return jdbcTemplate.query(GET_ALL_USERS, rowMapper);
     }
 
 }

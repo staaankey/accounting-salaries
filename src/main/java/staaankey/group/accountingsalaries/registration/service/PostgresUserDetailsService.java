@@ -30,4 +30,8 @@ public class PostgresUserDetailsService implements org.springframework.security.
 
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), authorities);
     }
+
+    public List<User> findAll() {
+        return userRepository.getUsers();
+    }
 }
