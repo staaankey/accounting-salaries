@@ -1,17 +1,34 @@
-import React from 'react'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import Department from '../pages/Departments';
+import Users from '../pages/Users';
+import NoPage from "../pages/NoPage";
+import Home from "../pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default function Navbar() {
+function Example() {
   return (
-    <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div className="container-fluid">
-        <a className="navbar-brand" href="#">Lugansk Taras Shevchenko Accounting Salaries</a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-          <button className="btn btn-outline-light">Do something</button>
-        </div>
-      </nav>
-    </div>
-  )
+    <>
+    <BrowserRouter>
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container>
+          <Navbar.Brand href="/">LTSNU Salary</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="/departments">Відділи</Nav.Link>
+            <Nav.Link href="/users">Співробітники</Nav.Link>  
+          </Nav>
+        </Container>
+      </Navbar>
+      <Routes>
+          <Route index element={<Home />} />
+          <Route path="departments" element={<Department />} />
+          <Route path="users" element={<Users />} />
+          <Route path="*" element={<NoPage />} />
+      </Routes>
+  </BrowserRouter>
+    </>
+  );
 }
+
+export default Example;

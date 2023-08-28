@@ -20,9 +20,9 @@ export default function Department() {
         <table class="table border shadow">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Parent ID</th>
-                <th scope="col">Name</th>
+                <th scope="col">Ідентифікатор</th>
+                <th scope="col">Назва</th>
+                <th scope="col">Ідентифікатор головного підрозділу</th>
                 </tr>
             </thead>
             <tbody>

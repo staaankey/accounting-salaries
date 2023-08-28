@@ -14,16 +14,7 @@ import NoPage from "./pages/NoPage";
 
 function App() {
   return (
-  <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="departments" element={<Department />} />
-          <Route path="users" element={<Users />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Navbar/>
   );
 }
 

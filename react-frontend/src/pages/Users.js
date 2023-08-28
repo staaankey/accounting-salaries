@@ -20,9 +20,9 @@ export default function Home() {
         <table class="table border shadow">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Login</th>
-                <th scope="col">Password</th>
+                <th scope="col">Ідентифікатор</th>
+                <th scope="col">Логін</th>
+                <th scope="col">Пароль</th>
                 </tr>
             </thead>
             <tbody>
