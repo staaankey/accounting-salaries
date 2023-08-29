@@ -3,6 +3,7 @@ package staaankey.group.accountingsalaries.registration.service;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.registration.entity.User;
 import staaankey.group.accountingsalaries.registration.repos.UserRepository;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 public class PostgresUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
     private final UserRepository userRepository;
+
 
     public PostgresUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -33,5 +35,17 @@ public class PostgresUserDetailsService implements org.springframework.security.
 
     public List<User> findAll() {
         return userRepository.getUsers();
+    }
+
+    public Integer deleteUser(int userId) {
+        return userRepository.deleteUser(userId);
+    }
+
+    public Integer saveUser(User user) {
+        return userRepository.saveUser(user);
+    }
+
+    public User findUserById(Integer id) {
+        return userRepository.findUserById(id);
     }
 }

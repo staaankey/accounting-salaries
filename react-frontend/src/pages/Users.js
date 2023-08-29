@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function Home() {
+export default function Users() {
     const [users, setUsers] = useState([]);
 
     useEffect(()=> {
@@ -9,7 +9,7 @@ export default function Home() {
     }, [])
 
     const loadUsers = async()=> {
-        const result =await axios.get("http://localhost:8080/find");
+        const result =await axios.get("http://localhost:8080/findAllUsers");
         setUsers(result.data);
         console.log(result.data);
     }
@@ -20,9 +20,9 @@ export default function Home() {
         <table class="table border shadow">
             <thead>
                 <tr>
-                <th scope="col">Ідентифікатор</th>
-                <th scope="col">Логін</th>
-                <th scope="col">Пароль</th>
+                <th scope="col">#</th>
+                <th scope="col">Login</th>
+                <th scope="col">Password</th>
                 </tr>
             </thead>
             <tbody>

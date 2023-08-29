@@ -1,8 +1,8 @@
 CREATE TABLE "users" (
-    "userId" serial NOT NULL,
+    "user_id" serial NOT NULL,
     "login" varchar NOT NULL UNIQUE,
     "password" varchar NOT NULL,
-    CONSTRAINT "users_pk" PRIMARY KEY ("userId")
+    CONSTRAINT "users_pk" PRIMARY KEY ("user_id")
 );
 
 CREATE TABLE "timesheets" (
@@ -83,5 +83,5 @@ ALTER TABLE "employers" ADD CONSTRAINT "employers_fk0" FOREIGN KEY ("passport_id
 ALTER TABLE "employers" ADD CONSTRAINT "employers_fk1" FOREIGN KEY ("workplace_id") REFERENCES "workplaces"("workplace_id");
 ALTER TABLE "employers" ADD CONSTRAINT "employers_fk2" FOREIGN KEY ("titles_id") REFERENCES "titles"("title_id");
 ALTER TABLE "employers" ADD CONSTRAINT "employers_fk3" FOREIGN KEY ("education_id") REFERENCES "educations"("education_id");
-ALTER TABLE "timesheets" ADD CONSTRAINT "timesheets_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("userId");
+ALTER TABLE "timesheets" ADD CONSTRAINT "timesheets_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("user_id");
 
