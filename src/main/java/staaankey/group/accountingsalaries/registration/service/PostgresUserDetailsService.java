@@ -7,31 +7,23 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.registration.entity.User;
 import staaankey.group.accountingsalaries.registration.repos.UserRepository;
+import staaankey.group.accountingsalaries.registration.web.UserDto;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PostgresUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class PostgresUserDetailsService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
 
-    public PostgresUserDetailsService(UserRepository userRepository) {
+
+    public PostgresUserDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.getUser(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
-
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), authorities);
-    }
 
     public List<User> findAll() {
         return userRepository.getUsers();
@@ -41,11 +33,34 @@ public class PostgresUserDetailsService implements org.springframework.security.
         return userRepository.deleteUser(userId);
     }
 
-    public Integer saveUser(User user) {
-        return userRepository.saveUser(user);
+    public Integer saveUser(UserDto user) {
+        return userRepository.saveUser(convertToEntity(user));
     }
 
     public User findUserById(Integer id) {
         return userRepository.findUserById(id);
+    }
+
+    public Boolean loginUser(UserDto user) {
+        User loginUser = userRepository.getUser(user.getLogin());
+
+        if (loginUser != null) {
+            String password = user.getPassword();
+            String encodedPassword = loginUser.getPassword();
+            Boolean isPwdRigth = passwordEncoder.matches(password, encodedPassword);
+            if (isPwdRigth) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public User convertToEntity(UserDto dto) {
+        User user = new User();
+        user.setLogin(dto.getLogin());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        return user;
     }
 }

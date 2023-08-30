@@ -1,7 +1,5 @@
 package staaankey.group.accountingsalaries.registration.controller;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import staaankey.group.accountingsalaries.registration.entity.User;
 import staaankey.group.accountingsalaries.registration.service.PostgresUserDetailsService;
@@ -30,7 +28,7 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public Integer saveUser(@RequestBody UserDto userDto) {
-        return userService.saveUser(convertToEntity(userDto));
+        return userService.saveUser(userDto);
     }
 
     @GetMapping("/findByUserId")
@@ -38,11 +36,8 @@ public class UserController {
         return userService.findUserById(userId);
     }
 
-
-    public User convertToEntity(UserDto dto) {
-        User user = new User();
-        user.setLogin(dto.getLogin());
-        user.setPassword(dto.getPassword());
-        return user;
+    @PostMapping("/login")
+    public Boolean loginUser(@RequestBody UserDto userDto) {
+        return userService.loginUser(userDto);
     }
 }

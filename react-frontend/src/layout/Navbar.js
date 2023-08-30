@@ -6,6 +6,8 @@ import Users from '../pages/Users';
 import NoPage from "../pages/NoPage";
 import Home from "../pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddUser from '../users/AddUser';
+import ViewUser from '../users/ViewUser';
 
 function Example() {
   return (
@@ -25,6 +27,7 @@ function Example() {
           <Route path="departments" element={<Department />} />
           <Route path="users" element={<Users />} />
           <Route path="*" element={<NoPage />} />
+          <Route path="viewuser" element={<ViewUser/>} />
       </Routes>
   </BrowserRouter>
     </>

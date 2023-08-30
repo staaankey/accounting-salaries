@@ -33,6 +33,11 @@ export default function Department() {
                         <th scope="row" key={index}>{index+1}</th>
                         <td>{departments.name}</td>
                         <td>{departments.parentId}</td>
+                        <td>
+                            <button className='btn btn-primary mx-2'>View</button>
+                            <button className='btn btn-outline mx-2'>Edit</button>
+                            <button className='btn btn-danger mx-2'>Delete</button>
+                        </td>
                         </tr>
                     ))
                 }
