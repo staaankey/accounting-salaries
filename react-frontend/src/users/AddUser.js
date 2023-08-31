@@ -6,11 +6,11 @@ export default function AddUser() {
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
-    name: "",
-    username: "",
+    login: "",
+    password: "",
   });
 
-  const { name, username} = user;
+  const {login, password} = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -19,46 +19,46 @@ export default function AddUser() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/saveUser", user);
-    navigate("/");
+    navigate("/users");
   };
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Register User</h2>
+          <h2 className="text-center m-4">Додати користувача</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="mb-3">
               <label htmlFor="Name" className="form-label">
-                Name
+                Логін
               </label>
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your name"
-                name="name"
-                value={name}
+                placeholder="Задайте логін користувача"
+                name="login"
+                value={login}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
               <label htmlFor="Username" className="form-label">
-                Username
+                Пароль
               </label>
               <input
                 type={"text"}
                 className="form-control"
-                placeholder="Enter your username"
-                name="username"
-                value={username}
+                placeholder="Задайте пароль користувача"
+                name="password"
+                value={password}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link className="btn btn-outline-danger mx-2" to="/users">
               Cancel
             </Link>
           </form>

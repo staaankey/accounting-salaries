@@ -14,6 +14,11 @@ export default function Department() {
         console.log(result.data);
     }
 
+    const deleteDepartment=async(id)=>{
+        await axios.delete(`http://localhost:8080/delete?departmentId=${id}`);
+        loadDepartments()
+    }
+
   return (
     <div className='container'>
         <div className='py-4'>
@@ -36,7 +41,7 @@ export default function Department() {
                         <td>
                             <button className='btn btn-primary mx-2'>View</button>
                             <button className='btn btn-outline mx-2'>Edit</button>
-                            <button className='btn btn-danger mx-2'>Delete</button>
+                            <button className='btn btn-danger mx-2' onClick={()=> deleteDepartment(departments.id)}>Delete</button>
                         </td>
                         </tr>
                     ))

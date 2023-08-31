@@ -4,6 +4,12 @@ import axios from 'axios'
 export default function Users() {
     const [users, setUsers] = useState([]);
 
+
+    const deleteUser=async(id)=>{
+        await axios.delete(`http://localhost:8080/deleteUser?userId=${id}`);
+        loadUsers()
+    }
+
     useEffect(()=> {
         loadUsers();
     }, [])
@@ -17,7 +23,7 @@ export default function Users() {
   return (
     <div className='container'>
         <div className='py-4'>
-        <table class="table border shadow">
+        <table className="table border shadow">
             <thead>
                 <tr>
                 <th scope="col">#</th>
@@ -36,7 +42,7 @@ export default function Users() {
                         <td>
                             <button className='btn btn-primary mx-2'>View</button>
                             <button className='btn btn-outline mx-2'>Edit</button>
-                            <button className='btn btn-danger mx-2'>Delete</button>
+                            <button className='btn btn-danger mx-2' onClick={()=> deleteUser(user.id)}>Delete</button>
                         </td>
                         </tr>
                     ))
