@@ -10,6 +10,7 @@ export default function Department() {
         loadDepartments();
     }, [])
 
+    
     const loadDepartments = async()=> {
         const result =await axios.get("http://localhost:8080/all");
         setDepartments(result.data);
