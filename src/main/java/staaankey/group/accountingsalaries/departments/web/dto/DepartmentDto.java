@@ -3,7 +3,7 @@ package staaankey.group.accountingsalaries.departments.web.dto;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class DepartmentDto {
+public class    DepartmentDto {
 
     private Integer parentId;
     private String name;

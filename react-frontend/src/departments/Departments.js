@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Nav from 'react-bootstrap/Nav';
+
 
 export default function Department() {
     const [departments, setDepartments] = useState([]);
@@ -28,6 +30,9 @@ export default function Department() {
                 <th scope="col">Ідентифікатор</th>
                 <th scope="col">Назва</th>
                 <th scope="col">Ідентифікатор головного підрозділу</th>
+                <ul class="btn btn-primary mx-2">
+                    <Nav.Link href="/adddepartment">Додати відділ</Nav.Link>
+                </ul>
                 </tr>
             </thead>
             <tbody>
@@ -39,9 +44,9 @@ export default function Department() {
                         <td>{departments.name}</td>
                         <td>{departments.parentId}</td>
                         <td>
-                            <button className='btn btn-primary mx-2'>View</button>
-                            <button className='btn btn-outline mx-2'>Edit</button>
-                            <button className='btn btn-danger mx-2' onClick={()=> deleteDepartment(departments.id)}>Delete</button>
+                            <button className='btn btn-primary mx-2'>Переглянути</button>
+                            <button className='btn btn-outline mx-2'>Редагувати</button>
+                            <button className='btn btn-danger mx-2' onClick={()=> deleteDepartment(departments.id)}>Видалити</button>
                         </td>
                         </tr>
                     ))

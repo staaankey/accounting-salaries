@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Nav from 'react-bootstrap/Nav';
+
 
 export default function Users() {
     const [users, setUsers] = useState([]);
@@ -26,9 +28,12 @@ export default function Users() {
         <table className="table border shadow">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Login</th>
-                <th scope="col">Password</th>
+                <th scope="col">Ідентифікатор</th>
+                <th scope="col">Логін</th>
+                <th scope="col">Пароль</th>
+                <ul class="btn btn-primary mx-2">
+                    <Nav.Link href="/adduser">Додати користувача</Nav.Link>
+                </ul>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +45,9 @@ export default function Users() {
                         <td>{user.login}</td>
                         <td>{user.password}</td>
                         <td>
-                            <button className='btn btn-primary mx-2'>View</button>
-                            <button className='btn btn-outline mx-2'>Edit</button>
-                            <button className='btn btn-danger mx-2' onClick={()=> deleteUser(user.id)}>Delete</button>
+                            <button className='btn btn-primary mx-2'>Переглянути</button>
+                            <button className='btn btn-outline mx-2'>Редагувати</button>
+                            <button className='btn btn-danger mx-2' onClick={()=> deleteUser(user.id)}>Видалити</button>
                         </td>
                         </tr>
                     ))
