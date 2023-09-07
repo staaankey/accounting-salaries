@@ -3,6 +3,8 @@ package staaankey.group.accountingsalaries.departments.service;
 
 
 import org.springframework.stereotype.Service;
+import staaankey.group.accountingsalaries.departments.exception.AppError;
+import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
 import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.repository.DepartmentRepository;
 
@@ -20,15 +22,19 @@ public class DepartmentService {
         return departmentRepository.saveDepartment(department);
     }
 
-    public Integer deleteDepartment(Integer departmentId) {
-        return departmentRepository.deleteDepartmentById(departmentId);
+    public Integer deleteDepartment(Integer departmentId) throws DepartmentNotFoundException {
+        if(departmentRepository.deleteDepartmentById(departmentId) == 0) {
+            throw new DepartmentNotFoundException("Department not found!");
+        } else {
+            return departmentRepository.deleteDepartmentById(departmentId);
+        }
     }
 
     public List<Department> getDepartments() {
         return departmentRepository.getAllDepartments();
     }
 
-    public Department findDepartmentById(Integer departmentId) {
+    public Department findDepartmentById(Integer departmentId) throws DepartmentNotFoundException {
         return departmentRepository.findDepartmentById(departmentId);
     }
 }

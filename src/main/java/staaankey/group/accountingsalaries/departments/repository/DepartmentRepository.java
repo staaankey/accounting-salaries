@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
 import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.util.DepartmentRowMapper;
 
@@ -38,14 +39,14 @@ public class DepartmentRepository {
     }
 
 
-    public Department findDepartmentById(int departmentId) {
+    public Department findDepartmentById(int departmentId) throws DepartmentNotFoundException {
         final var SQL_GET_DEPARTMENT_BY_ID = "SELECT * FROM departments WHERE department_id = :departmentId";
-        Department department = null;
+        Department department;
         try {
             department = jdbcTemplate.queryForObject(SQL_GET_DEPARTMENT_BY_ID, new MapSqlParameterSource()
                     .addValue("departmentId", departmentId), rowMapper);
         } catch (DataAccessException exception) {
-            System.out.println("failed to get department");
+            throw new DepartmentNotFoundException("Department not found!");
         }
         return department;
     }

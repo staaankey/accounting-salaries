@@ -1,13 +1,14 @@
 package staaankey.group.accountingsalaries.departments.controller;
 
 
-import io.swagger.annotations.Api;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import staaankey.group.accountingsalaries.departments.exception.AppError;
+import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
 import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.service.DepartmentService;
 import staaankey.group.accountingsalaries.departments.web.dto.DepartmentDto;
-
-import java.util.List;
 
 @RestController("/departments")
 @CrossOrigin("http://localhost:3000")
@@ -19,23 +20,34 @@ public class DepartController {
     }
 
     @PostMapping("/save")
-    public Integer saveDepartment(@RequestBody DepartmentDto department) {
-        return departmentService.saveDepartment(convertToEntity(department));
+    public ResponseEntity<?> saveDepartment(@RequestBody DepartmentDto department) {
+        return new ResponseEntity<>(departmentService.saveDepartment(convertToEntity(department)), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete")
-    public Integer deleteDepartment(@RequestParam Integer departmentId) {
-        return departmentService.deleteDepartment(departmentId);
+    public ResponseEntity<?> deleteDepartment(@RequestParam Integer departmentId) {
+        try {
+            return new ResponseEntity<>(departmentService.deleteDepartment(departmentId), HttpStatus.NO_CONTENT);
+        } catch (DepartmentNotFoundException e) {
+            return new ResponseEntity<>(
+                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + departmentId + " not found"), HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/all")
-    public List<Department> getDepartments() {
-        return departmentService.getDepartments();
+    public ResponseEntity<?> getDepartments() {
+        return new ResponseEntity<>(departmentService.getDepartments(), HttpStatus.OK);
     }
 
     @GetMapping("/findById")
-    public Department getDepartmentById(@RequestParam Integer departmentId) {
-        return departmentService.findDepartmentById(departmentId);
+    public ResponseEntity<?> getDepartmentById(@RequestParam Integer departmentId) {
+        try {
+            Department department = departmentService.findDepartmentById(departmentId);
+            return new ResponseEntity<>(department, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(
+                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + departmentId + " not found"), HttpStatus.NOT_FOUND);
+        }
     }
 
 

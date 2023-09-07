@@ -9,6 +9,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import staaankey.group.accountingsalaries.registration.entity.User;
+import staaankey.group.accountingsalaries.registration.exception.UserAlreadyExistException;
+import staaankey.group.accountingsalaries.registration.exception.UserNotFoundException;
 import staaankey.group.accountingsalaries.registration.util.UserRowMapper;
 
 import javax.sql.DataSource;
@@ -43,25 +45,29 @@ public class UserRepository {
                 .addValue("userId", userId));
     }
 
-    public User findUserById(int userId) {
+    public User findUserById(int userId) throws UserNotFoundException {
         final var SQL_GET_USER_BY_ID = "SELECT * FROM users WHERE user_id = :userId";
         User user = null;
         try {
             user = jdbcTemplate.queryForObject(SQL_GET_USER_BY_ID, new MapSqlParameterSource()
                     .addValue("userId", userId), rowMapper);
         } catch (DataAccessException exception) {
-            System.out.println("user not found");
+            throw new UserNotFoundException("User not presented in database");
         }
         return user;
     }
 
-    public Integer saveUser(User user) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        final var SQL_INSERT_USER = "INSERT INTO users(login, password) VALUES (:login, :password)";
-        jdbcTemplate.update(SQL_INSERT_USER, new MapSqlParameterSource()
-                .addValue("login", user.getLogin())
-                .addValue("password", user.getPassword()), keyHolder, new String[]{"user_id"});
-        return keyHolder.getKey().intValue();
+    public Integer saveUser(User user) throws UserAlreadyExistException {
+        try {
+            KeyHolder keyHolder = new GeneratedKeyHolder();
+            final var SQL_INSERT_USER = "INSERT INTO users(login, password) VALUES (:login, :password)";
+            jdbcTemplate.update(SQL_INSERT_USER, new MapSqlParameterSource()
+                    .addValue("login", user.getLogin())
+                    .addValue("password", user.getPassword()), keyHolder, new String[]{"user_id"});
+            return keyHolder.getKey().intValue();
+        } catch (DataAccessException exception) {
+            throw new UserAlreadyExistException("Login already exist");
+        }
     }
 
 }

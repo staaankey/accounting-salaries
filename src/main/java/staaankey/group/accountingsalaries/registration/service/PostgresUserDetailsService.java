@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.registration.entity.User;
+import staaankey.group.accountingsalaries.registration.exception.UserAlreadyExistException;
+import staaankey.group.accountingsalaries.registration.exception.UserNotFoundException;
 import staaankey.group.accountingsalaries.registration.repos.UserRepository;
 import staaankey.group.accountingsalaries.registration.web.UserDto;
 
@@ -29,15 +31,19 @@ public class PostgresUserDetailsService {
         return userRepository.getUsers();
     }
 
-    public Integer deleteUser(int userId) {
-        return userRepository.deleteUser(userId);
+    public Integer deleteUser(int userId) throws UserNotFoundException {
+        if (userRepository.deleteUser(userId) == 0) {
+            throw new UserNotFoundException("User not found");
+        } else {
+            return userRepository.deleteUser(userId);
+        }
     }
 
-    public Integer saveUser(UserDto user) {
+    public Integer saveUser(UserDto user) throws UserAlreadyExistException {
         return userRepository.saveUser(convertToEntity(user));
     }
 
-    public User findUserById(Integer id) {
+    public User findUserById(Integer id) throws UserNotFoundException {
         return userRepository.findUserById(id);
     }
 
