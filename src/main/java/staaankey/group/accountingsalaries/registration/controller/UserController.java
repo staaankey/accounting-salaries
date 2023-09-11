@@ -4,13 +4,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import staaankey.group.accountingsalaries.departments.exception.AppError;
-import staaankey.group.accountingsalaries.registration.entity.User;
 import staaankey.group.accountingsalaries.registration.exception.UserAlreadyExistException;
 import staaankey.group.accountingsalaries.registration.exception.UserNotFoundException;
 import staaankey.group.accountingsalaries.registration.service.PostgresUserDetailsService;
 import staaankey.group.accountingsalaries.registration.web.UserDto;
-
-import java.util.List;
 
 @RestController("/users")
 @CrossOrigin("http://localhost:3000")

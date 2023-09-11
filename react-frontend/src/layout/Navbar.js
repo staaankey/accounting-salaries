@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddUser from '../users/AddUser';
 import ViewUser from '../users/ViewUser';
 import AddDepartment from '../departments/AddDepartment';
+import DisplayUserTimesheet from '../timesheet/DisplayUserTimesheet';
 
 function Example() {
   return (
@@ -19,7 +20,7 @@ function Example() {
           <Navbar.Brand href="/">LTSNU Salary</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/departments">Відділи</Nav.Link>
-            <Nav.Link href="/users">Співробітники</Nav.Link>
+            <Nav.Link href="/users">Адміністратори</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -31,6 +32,7 @@ function Example() {
           <Route path="viewuser" element={<ViewUser />} />
           <Route path="adduser" element={<AddUser />} />
           <Route path='adddepartment' element={<AddDepartment /> } />
+          <Route path='displaytimesheet' element={<DisplayUserTimesheet /> } />
       </Routes>
   </BrowserRouter>
     </>

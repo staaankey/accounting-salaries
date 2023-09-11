@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Nav from 'react-bootstrap/Nav';
+import { useNavigate } from 'react-router-dom'      
+import showTimesheet from '../timesheet/DisplayUserTimesheet';
 
 
 export default function Users() {
+    const navigate = useNavigate();
+
     const [users, setUsers] = useState([]);
 
 
@@ -45,9 +49,10 @@ export default function Users() {
                         <td>{user.login}</td>
                         <td>{user.password}</td>
                         <td>
-                            <button className='btn btn-primary mx-2'>Переглянути</button>
-                            <button className='btn btn-outline mx-2'>Редагувати</button>
-                            <button className='btn btn-danger mx-2' onClick={()=> deleteUser(user.id)}>Видалити</button>
+                            <button className='btn btn-outline-primary'> Переглянути </button>
+                            <button className='btn btn-outline-success'> Редагувати </button>
+                            <button className='btn btn-outline-danger' onClick={()=> deleteUser(user.id)}> Видалити </button>
+                            <button className='btn btn-outline-dark' onClick={() => navigate("/displaytimesheet")}> Табель </button>
                         </td>
                         </tr>
                     ))
