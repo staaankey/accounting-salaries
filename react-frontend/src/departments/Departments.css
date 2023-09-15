@@ -1,0 +1,8 @@
+.btn-primary {
+    color: black;
+    position: relative;
+}
+
+.btn-danger {
+    position: absolute;
+}

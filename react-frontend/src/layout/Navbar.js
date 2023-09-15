@@ -10,6 +10,9 @@ import AddUser from '../users/AddUser';
 import ViewUser from '../users/ViewUser';
 import AddDepartment from '../departments/AddDepartment';
 import DisplayUserTimesheet from '../timesheet/DisplayUserTimesheet';
+import SalaryView from '../salary/SalaryView'
+import ViewDepartment from '../departments/ViewDepartment';
+
 
 function Example() {
   return (
@@ -21,6 +24,7 @@ function Example() {
           <Nav className="me-auto">
             <Nav.Link href="/departments">Відділи</Nav.Link>
             <Nav.Link href="/users">Адміністратори</Nav.Link>
+            <Nav.Link href="/salaryview">Зарплати</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -33,6 +37,8 @@ function Example() {
           <Route path="adduser" element={<AddUser />} />
           <Route path='adddepartment' element={<AddDepartment /> } />
           <Route path='displaytimesheet' element={<DisplayUserTimesheet /> } />
+          <Route path='salaryview' element={<SalaryView/>} />
+          <Route path='viewdepartment' element={<ViewDepartment />} />
       </Routes>
   </BrowserRouter>
     </>

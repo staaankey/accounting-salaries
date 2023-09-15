@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Nav from 'react-bootstrap/Nav';
-import { useNavigate } from 'react-router-dom'      
+import { useNavigate, Link} from 'react-router-dom'      
 import showTimesheet from '../timesheet/DisplayUserTimesheet';
+import '../pages/Users.css'
+
 
 
 export default function Users() {
@@ -49,7 +51,7 @@ export default function Users() {
                         <td>{user.login}</td>
                         <td>{user.password}</td>
                         <td>
-                            <button className='btn btn-outline-primary'> Переглянути </button>
+                            <Link to='/viewdepartment'><button className='btn btn-outline-primary'>Дивитись</button></Link>
                             <button className='btn btn-outline-success'> Редагувати </button>
                             <button className='btn btn-outline-danger' onClick={()=> deleteUser(user.id)}> Видалити </button>
                             <button className='btn btn-outline-dark' onClick={() => navigate("/displaytimesheet")}> Табель </button>
