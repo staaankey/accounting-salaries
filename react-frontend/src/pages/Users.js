@@ -9,7 +9,6 @@ import '../pages/Users.css'
 
 export default function Users() {
     const navigate = useNavigate();
-
     const [users, setUsers] = useState([]);
 
 
@@ -51,7 +50,7 @@ export default function Users() {
                         <td>{user.login}</td>
                         <td>{user.password}</td>
                         <td>
-                            <Link to='/viewdepartment'><button className='btn btn-outline-primary'>Дивитись</button></Link>
+                            <Link to='/home'><button className='btn btn-outline-primary'>Дивитись</button></Link>
                             <button className='btn btn-outline-success'> Редагувати </button>
                             <button className='btn btn-outline-danger' onClick={()=> deleteUser(user.id)}> Видалити </button>
                             <button className='btn btn-outline-dark' onClick={() => navigate("/displaytimesheet")}> Табель </button>

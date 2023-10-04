@@ -29,6 +29,7 @@ CREATE TABLE "employers" (
     "workplace_id" integer NOT NULL,
     "titles_id" integer NOT NULL,
     "education_id" integer NOT NULL,
+    "department_id" integer NOT NULL,
     CONSTRAINT "employers_pk" PRIMARY KEY ("employee_id")
 );
 
@@ -83,5 +84,6 @@ ALTER TABLE "employers" ADD CONSTRAINT "employers_fk0" FOREIGN KEY ("passport_id
 ALTER TABLE "employers" ADD CONSTRAINT "employers_fk1" FOREIGN KEY ("workplace_id") REFERENCES "workplaces"("workplace_id");
 ALTER TABLE "employers" ADD CONSTRAINT "employers_fk2" FOREIGN KEY ("titles_id") REFERENCES "titles"("title_id");
 ALTER TABLE "employers" ADD CONSTRAINT "employers_fk3" FOREIGN KEY ("education_id") REFERENCES "educations"("education_id");
+ALTER TABLE "employers" ADD CONSTRAINT "employers_fk4" FOREIGN KEY ("department_id") REFERENCES "departments"("department_id");
 ALTER TABLE "timesheets" ADD CONSTRAINT "timesheets_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("user_id");
 

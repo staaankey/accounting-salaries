@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.departments.model;
+package staaankey.group.accountingsalaries.departments.exception.model;
 
 
 import javax.persistence.Column;

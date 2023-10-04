@@ -8,7 +8,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
-import staaankey.group.accountingsalaries.departments.model.Department;
+import staaankey.group.accountingsalaries.departments.exception.model.Department;
 import staaankey.group.accountingsalaries.departments.util.DepartmentRowMapper;
 
 import java.util.List;

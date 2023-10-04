@@ -9,14 +9,12 @@ export default function ViewDepartment() {
     name: "",
   });
 
-  const { id } = useParams();
-
   useEffect(() => {
     loadDepartment();
   }, []);
 
   const loadDepartment = async () => {
-    const result = await axios.get(`http://localhost:8080/findById?departmentId=${id}`);
+    const result = await axios.get(`http://localhost:8080/findById?departmentId=0`); //${id}
     setDepartment(result.data);
   };
 
@@ -24,21 +22,23 @@ export default function ViewDepartment() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">User Details</h2>
+          <h2 className="text-center m-4">Інформація про підрозділ</h2>
 
           <div className="card">
             <div className="card-header">
-              Details of user id : {department.id}
+              <tr>
+              Ідентифікатор підрозділу: {department.id}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
-                  <b>Name:</b>
-                  {department.parent_id}
-                </li>
-                <li className="list-group-item">
-                  <b>UserName:</b>
+                  <b>Назва: </b>
                   {department.name}
                 </li>
+                <li className="list-group-item">
+                  <b>Співробітники:</b>
+                  {department.parent_id}
+                </li>
               </ul>
+              </tr>
             </div>
           </div>
           <Link className="btn btn-primary my-2" to={"/"}>

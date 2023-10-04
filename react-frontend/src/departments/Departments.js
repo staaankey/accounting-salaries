@@ -10,9 +10,6 @@ const linkStyle = {
     color: 'black'
   };
   
-
-
-
 export default function Department() {
     const [departments, setDepartments] = useState([]);
 
@@ -21,8 +18,6 @@ export default function Department() {
     }, [])
 
     
-
-
     const loadDepartments = async()=> {
         const result =await axios.get("http://localhost:8080/all");
         setDepartments(result.data);

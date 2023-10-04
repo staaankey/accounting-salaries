@@ -38,7 +38,7 @@ function Example() {
           <Route path='adddepartment' element={<AddDepartment /> } />
           <Route path='displaytimesheet' element={<DisplayUserTimesheet /> } />
           <Route path='salaryview' element={<SalaryView/>} />
-          <Route path='viewdepartment' element={<ViewDepartment />} />
+          <Route path='/viewdepartment/' element={<ViewDepartment />} />
       </Routes>
   </BrowserRouter>
     </>

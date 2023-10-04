@@ -66,9 +66,8 @@ export default function SalaryView() {
             <ListItemIcon>
 
             </ListItemIcon>
-            <ListItemText primary="Open Geeks for Geeks Courses" />
+            <ListItemText primary="Відкрити" />
             {/*code to open and closed list*/}
-            {open ? <ExpandLess /> : <ExpandMore />} 
           </ListItem>
           <Collapse in={open} timeout="auto" unmountOnExit>
             {/*List item are wrapped inside List */}
@@ -80,7 +79,7 @@ export default function SalaryView() {
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                  primary="GFG Self-Paced Course"
+                  primary="Департаменти"
                   secondary={
                     secondary ? "Structured premium video lectures" : null
                   }
@@ -88,7 +87,6 @@ export default function SalaryView() {
                 <ListItemSecondaryAction>
                   {/*Inside the IconButton, we can render various icons*/}
                   <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
@@ -99,7 +97,7 @@ export default function SalaryView() {
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                  primary="Placement Preparation Course"
+                  primary="Інститути"
   
                    // if secondary variable state is true then show
                    // text otherwise null i.e. nothing will be shown
@@ -111,7 +109,6 @@ export default function SalaryView() {
                 />
                 <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
@@ -122,7 +119,7 @@ export default function SalaryView() {
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                  primary="Live Course"
+                  primary="Підрозділи"
                   secondary={
                     secondary
                       ? "Real Time Live Classes accessible from home"
@@ -131,7 +128,6 @@ export default function SalaryView() {
                 />
                 <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
