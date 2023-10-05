@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.registration.controller;
+package staaankey.group.accountingsalaries.registration.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import staaankey.group.accountingsalaries.departments.exception.AppError;
 import staaankey.group.accountingsalaries.registration.exception.UserAlreadyExistException;
 import staaankey.group.accountingsalaries.registration.exception.UserNotFoundException;
 import staaankey.group.accountingsalaries.registration.service.PostgresUserDetailsService;
-import staaankey.group.accountingsalaries.registration.web.UserDto;
+import staaankey.group.accountingsalaries.registration.web.dto.UserDto;
 
 @RestController("/users")
 @CrossOrigin("http://localhost:3000")

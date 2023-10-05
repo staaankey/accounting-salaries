@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.employers.web.dto;
+package staaankey.group.accountingsalaries.employers.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,8 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class EmployeeDto {
+@Entity(name = "employers")
+public class Employee {
+    @Id
+    @Column(name = "employee_id", nullable = false)
+    private int employeeId;
     @Column(name = "full_name")
     private String fullName;
     @Column(name = "photo_url")
@@ -26,6 +32,31 @@ public class EmployeeDto {
     private int educationId;
     @Column(name = "department_id")
     private int departmentId;
+
+    public Employee() {
+
+    }
+
+    public Employee(int employeeId, String fullName, String photoUrl, String phone, String address, int passportId, int workplaceId, int titlesId, int educationId, int departmentId) {
+        this.employeeId = employeeId;
+        this.fullName = fullName;
+        this.photoUrl = photoUrl;
+        this.phone = phone;
+        this.address = address;
+        this.passportId = passportId;
+        this.workplaceId = workplaceId;
+        this.titlesId = titlesId;
+        this.educationId = educationId;
+        this.departmentId = departmentId;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
 
     public String getFullName() {
         return fullName;

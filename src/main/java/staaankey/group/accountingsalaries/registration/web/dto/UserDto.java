@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.registration.web;
+package staaankey.group.accountingsalaries.registration.web.dto;
 
 public class UserDto {
     private String login;

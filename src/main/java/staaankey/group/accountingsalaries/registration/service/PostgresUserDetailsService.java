@@ -1,17 +1,13 @@
 package staaankey.group.accountingsalaries.registration.service;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.registration.entity.User;
 import staaankey.group.accountingsalaries.registration.exception.UserAlreadyExistException;
 import staaankey.group.accountingsalaries.registration.exception.UserNotFoundException;
 import staaankey.group.accountingsalaries.registration.repos.UserRepository;
-import staaankey.group.accountingsalaries.registration.web.UserDto;
+import staaankey.group.accountingsalaries.registration.web.dto.UserDto;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service

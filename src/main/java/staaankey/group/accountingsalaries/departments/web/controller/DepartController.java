@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.departments.controller;
+package staaankey.group.accountingsalaries.departments.web.controller;
 
 
 import org.springframework.http.HttpStatus;
