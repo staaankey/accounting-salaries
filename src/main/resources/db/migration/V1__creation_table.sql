@@ -41,7 +41,7 @@ CREATE TABLE "passports" (
     "date_of_birth" DATE NOT NULL,
     "place_of_birth" varchar NOT NULL,
     "date_of_issue" DATE NOT NULL,
-    "date_of_expiring" integer NOT NULL,
+    "date_of_expiring" DATE NOT NULL,
     "place_of_issue" varchar NOT NULL,
     CONSTRAINT "passports_pk" PRIMARY KEY ("passport_id")
 );
