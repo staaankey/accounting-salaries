@@ -34,4 +34,8 @@ public class TitleService {
             return titleRepository.delete(id);
         }
     }
+
+    public Title findById(int id) throws TitleNotFoundException {
+        return titleRepository.findById(id);
+    }
 }

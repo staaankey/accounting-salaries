@@ -42,4 +42,16 @@ public class TitleController {
         }
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<?> findTitle(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(titleService.findById(id), HttpStatus.OK);
+        } catch (TitleNotFoundException e) {
+            return new ResponseEntity<>(
+                    new AppError(
+                            HttpStatus.NOT_FOUND.value(), "Title with id: %d not found".formatted(id)
+                    ), HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
