@@ -1,15 +1,14 @@
-package staaankey.group.accountingsalaries.educations.repository;
+package staaankey.group.accountingsalaries.security.educations.repository;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import staaankey.group.accountingsalaries.educations.exceptions.EducationNotFindEducation;
-import staaankey.group.accountingsalaries.educations.model.Education;
-import staaankey.group.accountingsalaries.educations.util.EducationRowMapper;
+import staaankey.group.accountingsalaries.security.educations.exceptions.EducationNotFindEducation;
+import staaankey.group.accountingsalaries.security.educations.model.Education;
+import staaankey.group.accountingsalaries.security.educations.util.EducationRowMapper;
 
 @Repository
 public class EducationRepository {
