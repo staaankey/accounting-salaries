@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.educations.model;
+package staaankey.group.accountingsalaries.security.educations.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
