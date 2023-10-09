@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import staaankey.group.accountingsalaries.employers.exceptions.EmployeeNotFoundException;
 import staaankey.group.accountingsalaries.employers.model.Employee;
 import staaankey.group.accountingsalaries.employers.util.EmployeeRowMapper;
-import staaankey.group.accountingsalaries.registration.exception.UserNotFoundException;
 
 @Repository
 public class EmployeeRepository {

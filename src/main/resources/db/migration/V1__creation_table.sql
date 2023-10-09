@@ -62,7 +62,7 @@ CREATE TABLE "educations" (
      "degree" varchar NOT NULL,
      "diploma_number" integer NOT NULL,
      "diploma_series" varchar NOT NULL,
-     "university_name" integer NOT NULL,
+     "university_name" varchar NOT NULL,
      CONSTRAINT "educations_pk" PRIMARY KEY ("education_id")
 );
 
