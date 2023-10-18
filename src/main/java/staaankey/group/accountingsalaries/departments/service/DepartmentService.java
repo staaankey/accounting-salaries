@@ -4,7 +4,7 @@ package staaankey.group.accountingsalaries.departments.service;
 
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
-import staaankey.group.accountingsalaries.departments.exception.model.Department;
+import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.repository.DepartmentRepository;
 
 import java.util.List;

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import staaankey.group.accountingsalaries.departments.exception.AppError;
 import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
-import staaankey.group.accountingsalaries.departments.exception.model.Department;
+import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.service.DepartmentService;
 import staaankey.group.accountingsalaries.departments.web.dto.DepartmentDto;
 

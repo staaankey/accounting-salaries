@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  minio:
+    image: minio/minio:latest
+    command: server --console-address ":9001" /data/
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: staaankeykey
+      MINIO_ROOT_PASSWORD: staaankeykey
+    volumes:
+      - minio-storage:/data
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+        /usr/bin/mc alias set myminio http://minio:9000 staaankeykey staaankeykey;
+      /usr/bin/mc mb myminio/photo-bucket;
+      /usr/bin/mc policy set public myminio/photo-bucket;
+      exit 0;
+      "
+
+volumes:
+  minio-storage:

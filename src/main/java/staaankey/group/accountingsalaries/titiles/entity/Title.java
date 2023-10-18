@@ -1,11 +1,20 @@
 package staaankey.group.accountingsalaries.titiles.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity(name = "titles")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Title {
     @Id
     @Column(name = "title_id", nullable = false)
@@ -20,65 +29,4 @@ public class Title {
     private LocalDate dateOfIssue;
     @Column(name = "name_of_place")
     private int nameOfPlace;
-
-
-    public Title() {
-    }
-
-    public Title(int id, String titleName, int speciality, String serialNumber, LocalDate dateOfIssue, int nameOfPlace) {
-        this.id = id;
-        this.titleName = titleName;
-        this.speciality = speciality;
-        this.serialNumber = serialNumber;
-        this.dateOfIssue = dateOfIssue;
-        this.nameOfPlace = nameOfPlace;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitleName() {
-        return titleName;
-    }
-
-    public void setTitleName(String titleName) {
-        this.titleName = titleName;
-    }
-
-    public int getSpeciality() {
-        return speciality;
-    }
-
-    public void setSpeciality(int speciality) {
-        this.speciality = speciality;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public LocalDate getDateOfIssue() {
-        return dateOfIssue;
-    }
-
-    public void setDateOfIssue(LocalDate dateOfIssue) {
-        this.dateOfIssue = dateOfIssue;
-    }
-
-    public int getNameOfPlace() {
-        return nameOfPlace;
-    }
-
-    public void setNameOfPlace(int nameOfPlace) {
-        this.nameOfPlace = nameOfPlace;
-    }
 }

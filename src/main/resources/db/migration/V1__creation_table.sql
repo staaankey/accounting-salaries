@@ -19,6 +19,7 @@ create table "departments" (
     "name" varchar not null,
     CONSTRAINT  "departments_pk" PRIMARY KEY ("department_id")
 );
+
 CREATE TABLE "employers" (
     "employee_id" serial NOT NULL,
     "full_name" varchar NOT NULL,

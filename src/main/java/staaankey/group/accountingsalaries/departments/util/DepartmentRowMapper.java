@@ -3,7 +3,7 @@ package staaankey.group.accountingsalaries.departments.util;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import staaankey.group.accountingsalaries.departments.exception.model.Department;
+import staaankey.group.accountingsalaries.departments.model.Department;
 
 
 import java.sql.ResultSet;
