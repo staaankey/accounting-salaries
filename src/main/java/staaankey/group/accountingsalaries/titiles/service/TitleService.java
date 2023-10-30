@@ -16,26 +16,21 @@ public class TitleService {
         this.titleRepository = titleRepository;
     }
 
-    public Integer save(TitleDto titleDto) throws TitleNotSavedException {
+    public Title save(TitleDto titleDto) throws TitleNotSavedException {
         Title title = new Title();
         BeanUtils.copyProperties(titleDto, title);
-
-        try {
-            return titleRepository.save(title);
-        } catch (TitleNotSavedException e) {
-            throw new TitleNotSavedException("Title not saved!");
-        }
+        return titleRepository.save(title);
     }
 
-    public Integer delete(int id) throws TitleNotFoundException {
-        if (titleRepository.delete(id) == 0) {
+    public Long delete(Long id) throws TitleNotFoundException {
+        if (titleRepository.deleteTitleById(id) == 0) {
             throw new TitleNotFoundException("Not found");
         } else {
-            return titleRepository.delete(id);
+            return titleRepository.deleteTitleById(id);
         }
     }
 
-    public Title findById(int id) throws TitleNotFoundException {
-        return titleRepository.findById(id);
+    public Title findById(Long id) throws TitleNotFoundException {
+        return titleRepository.findTitleById(id);
     }
 }

@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @DeleteMapping("/deleteUser")
-    public ResponseEntity<?> deleteUser(@RequestParam int userId) {
+    public ResponseEntity<?> deleteUser(@RequestParam Long userId) {
         try {
             return new ResponseEntity<>(userService.deleteUser(userId), HttpStatus.NO_CONTENT);
         } catch (UserNotFoundException e) {
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/findByUserId")
-    public ResponseEntity<?> findUserById(Integer userId) {
+    public ResponseEntity<?> findUserById(Long userId) {
         try {
             return new ResponseEntity<>(userService.findUserById(userId), HttpStatus.OK);
         } catch (UserNotFoundException e) {

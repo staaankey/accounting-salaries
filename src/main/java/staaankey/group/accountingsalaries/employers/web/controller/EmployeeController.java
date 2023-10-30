@@ -30,7 +30,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/deleteEmployee/{employeeId}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable int employeeId) {
+    public ResponseEntity<?> deleteEmployee(@PathVariable Long employeeId) {
         try {
             return new ResponseEntity<>(employeeService.delete(employeeId), HttpStatus.OK);
         } catch (EmployeeNotSavedException e) {
@@ -39,7 +39,7 @@ public class EmployeeController {
     }
 
     @GetMapping("find/{employeeId}")
-    public ResponseEntity<?> findEmployeeById(@PathVariable int employeeId) {
+    public ResponseEntity<?> findEmployeeById(@PathVariable Long employeeId) {
         try {
             return new ResponseEntity<>(employeeService.findByEmployeeId(employeeId), HttpStatus.OK);
         } catch (EmployeeNotFoundException e) {

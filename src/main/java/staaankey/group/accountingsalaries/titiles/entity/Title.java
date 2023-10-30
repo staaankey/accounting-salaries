@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity(name = "titles")
@@ -17,8 +15,9 @@ import java.time.LocalDate;
 @Setter
 public class Title {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "title_id", nullable = false)
-    private int id;
+    private long id;
     @Column(name = "title_name")
     private String titleName;
     @Column(name = "speciality")

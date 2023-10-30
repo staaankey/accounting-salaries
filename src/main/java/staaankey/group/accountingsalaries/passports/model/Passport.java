@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity(name = "passports")
@@ -18,8 +16,9 @@ import java.time.LocalDate;
 @Setter
 public class Passport {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "passport_id", nullable = false)
-    private Integer id;
+    private Long id;
     @Column(name = "series")
     private String series;
     @Column(name = "date_of_birth")

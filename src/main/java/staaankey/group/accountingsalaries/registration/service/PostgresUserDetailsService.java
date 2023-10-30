@@ -24,27 +24,27 @@ public class PostgresUserDetailsService {
 
 
     public List<User> findAll() {
-        return userRepository.getUsers();
+        return userRepository.findAll();
     }
 
-    public Integer deleteUser(int userId) throws UserNotFoundException {
-        if (userRepository.deleteUser(userId) == 0) {
+    public Long deleteUser(Long userId) throws UserNotFoundException {
+        if (userRepository.deleteUserById(userId) == 0) {
             throw new UserNotFoundException("User not found");
         } else {
-            return userRepository.deleteUser(userId);
+            return userRepository.deleteUserById(userId);
         }
     }
 
-    public Integer saveUser(UserDto user) throws UserAlreadyExistException {
-        return userRepository.saveUser(convertToEntity(user));
+    public User saveUser(UserDto user) throws UserAlreadyExistException {
+        return userRepository.save(convertToEntity(user));
     }
 
-    public User findUserById(Integer id) throws UserNotFoundException {
+    public User findUserById(Long id) throws UserNotFoundException {
         return userRepository.findUserById(id);
     }
 
     public Boolean loginUser(UserDto user) {
-        User loginUser = userRepository.getUser(user.getLogin());
+        User loginUser = userRepository.findUserByLogin(user.getLogin());
 
         if (loginUser != null) {
             String password = user.getPassword();

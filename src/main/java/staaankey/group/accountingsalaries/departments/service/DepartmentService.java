@@ -17,11 +17,11 @@ public class DepartmentService {
         this.departmentRepository = departmentRepository;
     }
 
-    public Integer saveDepartment(Department department) {
-        return departmentRepository.saveDepartment(department);
+    public Department saveDepartment(Department department) {
+        return departmentRepository.save(department);
     }
 
-    public Integer deleteDepartment(Integer departmentId) throws DepartmentNotFoundException {
+    public Long deleteDepartment(Long departmentId) throws DepartmentNotFoundException {
         if(departmentRepository.deleteDepartmentById(departmentId) == 0) {
             throw new DepartmentNotFoundException("Department not found!");
         } else {
@@ -30,10 +30,10 @@ public class DepartmentService {
     }
 
     public List<Department> getDepartments() {
-        return departmentRepository.getAllDepartments();
+        return departmentRepository.findAll();
     }
 
-    public Department findDepartmentById(Integer departmentId) throws DepartmentNotFoundException {
+    public Department findDepartmentById(Long departmentId) throws DepartmentNotFoundException {
         return departmentRepository.findDepartmentById(departmentId);
     }
 }

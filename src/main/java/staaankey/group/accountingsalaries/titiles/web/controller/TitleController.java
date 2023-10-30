@@ -31,7 +31,7 @@ public class TitleController {
 
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteTitle(@PathVariable int id) {
+    public ResponseEntity<?> deleteTitle(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(titleService.delete(id), HttpStatus.OK);
         } catch (TitleNotFoundException e) {
@@ -43,7 +43,7 @@ public class TitleController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<?> findTitle(@PathVariable int id) {
+    public ResponseEntity<?> findTitle(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(titleService.findById(id), HttpStatus.OK);
         } catch (TitleNotFoundException e) {
