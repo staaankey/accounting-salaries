@@ -20,7 +20,7 @@ public class User {
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Integer userId;
+    private Long id;
     private String login;
     private String password;
 

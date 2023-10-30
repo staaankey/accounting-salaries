@@ -29,7 +29,7 @@ public class PassportController {
 
 
     @DeleteMapping("/deletePassport/{passportId}")
-    public ResponseEntity<?> deletePassport(@PathVariable int passportId) {
+    public ResponseEntity<?> deletePassport(@PathVariable Long passportId) {
         try {
             return new ResponseEntity<>(passportService.delete(passportId), HttpStatus.OK);
         } catch (PassportNotFoundException e) {
@@ -38,7 +38,7 @@ public class PassportController {
     }
 
     @GetMapping("/find/{passportId}")
-    public ResponseEntity<?> findByPassportId(@PathVariable int passportId) {
+    public ResponseEntity<?> findByPassportId(@PathVariable Long passportId) {
         try {
             return new ResponseEntity<>(passportService.findByPassportId(passportId), HttpStatus.OK);
         } catch (PassportNotFoundException e) {

@@ -16,7 +16,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Integer save(EmployeeDto employeeDto) throws EmployeeNotSavedException {
+    public Employee save(EmployeeDto employeeDto) throws EmployeeNotSavedException {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
         try {
@@ -27,16 +27,16 @@ public class EmployeeService {
         }
     }
 
-    public int delete(int employeeId) throws EmployeeNotSavedException {
-        if (employeeRepository.delete(employeeId) == 0) {
+    public Long delete(Long employeeId) throws EmployeeNotSavedException {
+        if (employeeRepository.deleteEmployeeByEmployeeId(employeeId) == 0) {
             throw new EmployeeNotSavedException("Employee not presented in database!");
         } else {
-            return employeeRepository.delete(employeeId);
+            return employeeRepository.deleteEmployeeByEmployeeId(employeeId);
         }
     }
 
 
-    public Employee findByEmployeeId(int employeeId) throws EmployeeNotFoundException {
-        return employeeRepository.findEmployeeById(employeeId);
+    public Employee findByEmployeeId(Long employeeId) throws EmployeeNotFoundException {
+        return employeeRepository.findEmployeeByEmployeeId(employeeId);
     }
 }

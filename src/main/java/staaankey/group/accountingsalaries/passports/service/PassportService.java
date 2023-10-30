@@ -17,26 +17,21 @@ public class PassportService {
     }
 
 
-    public Integer save(PassportDto passportDto) throws PassportNotCreatedException {
+    public Passport save(PassportDto passportDto) throws PassportNotCreatedException {
         Passport passport = new Passport();
         BeanUtils.copyProperties(passportDto, passport);
-        try {
-            return passportRepository.save(passport);
-        } catch (PassportNotCreatedException e) {
-            e.printStackTrace();
-            throw new PassportNotCreatedException("Can't save passport!");
-        }
+        return passportRepository.save(passport);
     }
 
-    public Integer delete(int passportId) throws PassportNotFoundException {
-        if (passportRepository.delete(passportId) == 0) {
+    public Long delete(Long passportId) throws PassportNotFoundException {
+        if (passportRepository.deletePassportById(passportId) == 0) {
             throw new PassportNotFoundException("Passport not found!");
         } else {
-            return passportRepository.delete(passportId);
+            return passportRepository.deletePassportById(passportId);
         }
     }
 
-    public Passport findByPassportId(int passportId) throws PassportNotFoundException {
-        return passportRepository.findByPassportId(passportId);
+    public Passport findByPassportId(Long passportId) throws PassportNotFoundException {
+        return passportRepository.findPassportById(passportId);
     }
 }

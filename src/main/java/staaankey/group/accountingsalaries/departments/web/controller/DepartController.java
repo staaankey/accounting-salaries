@@ -25,7 +25,7 @@ public class DepartController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteDepartment(@RequestParam Integer departmentId) {
+    public ResponseEntity<?> deleteDepartment(@RequestParam Long departmentId) {
         try {
             return new ResponseEntity<>(departmentService.deleteDepartment(departmentId), HttpStatus.NO_CONTENT);
         } catch (DepartmentNotFoundException e) {
@@ -40,7 +40,7 @@ public class DepartController {
     }
 
     @GetMapping("/findById")
-    public ResponseEntity<?> getDepartmentById(@RequestParam Integer departmentId) {
+    public ResponseEntity<?> getDepartmentById(@RequestParam Long departmentId) {
         try {
             Department department = departmentService.findDepartmentById(departmentId);
             return new ResponseEntity<>(department, HttpStatus.OK);

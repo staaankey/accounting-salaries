@@ -2,9 +2,7 @@ package staaankey.group.accountingsalaries.employers.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity(name = "employers")
@@ -13,8 +11,9 @@ import javax.persistence.Id;
 @Getter @Setter
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id", nullable = false)
-    private int employeeId;
+    private long employeeId;
     @Column(name = "full_name")
     private String fullName;
     @Column(name = "photo_url")

@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "departments")
 @AllArgsConstructor
@@ -17,8 +15,10 @@ import javax.persistence.Id;
 @Setter
 public class Department {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "department_id", nullable = false)
-    private Integer id;
+    private long id;
+    @Column(name = "parent_id")
     private Integer parentId;
     private String name;
 }
