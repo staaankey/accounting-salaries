@@ -1,30 +1,63 @@
 'use client';
-import styles from './page.module.scss';
-import Table from '../components/table.js';
+import TableDep from '../components/table_dep.js';
 
 
 export default function Departments() {
-    return <Table colProps={column}></Table>;
+    return <TableDep head={head} body={{}}></TableDep>;
 }
 
 
-const column = [
-    {
-        name: 'Ідентифікатор',
-        id: 0,
-        req: false,
-        type: 'number'
-    },
-    {
-        name: 'Назва',
-        id: 1,
-        req: true,
-        type: 'text'
-    },
-    {
-        name: 'Ідентифікатор головного підрозділу',
-        id: 2,
-        req: false,
-        type: 'number'
-    },
-];
+const head = {
+    main: [
+        {
+            name: 'Ідентифікатор',
+            id: 0,
+            dis: true,
+            type: 'number'
+        },
+        {
+            name: 'Назва',
+            id: 1,
+            dis: false,
+            type: 'text'
+        },
+        {
+            name: 'Ідентифікатор головного підрозділу',
+            id: 2,
+            dis: true,
+            type: 'number'
+        },
+    ],
+    empl: [
+        {
+            name: 'ПІБ',
+            id: 0,
+            dis: false,
+            type: 'text'
+        },
+        {
+            name: 'Фото',
+            id: 1,
+            dis: false,
+            type: 'file'
+        },
+        {
+            name: 'Телефон',
+            id: 2,
+            dis: false,
+            type: 'tel'
+        },
+        {
+            name: 'Адрес',
+            id: 3,
+            dis: false,
+            type: 'text'
+        },
+        {
+            name: 'РНОКПП',
+            id: 4,
+            dis: false,
+            type: 'number'
+        },
+    ]
+};
