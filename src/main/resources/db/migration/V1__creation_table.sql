@@ -15,7 +15,7 @@ CREATE TABLE "timesheets" (
 
 create table "departments" (
     "department_id" serial NOT NULL,
-    parent_id integer not null,
+    "parent_id" integer not null,
     "name" varchar not null,
     CONSTRAINT  "departments_pk" PRIMARY KEY ("department_id")
 );
@@ -26,6 +26,7 @@ CREATE TABLE "employers" (
     "photo_url" varchar NOT NULL,
     "phone" varchar NOT NULL,
     "address" varchar NOT NULL,
+    "rntrc" varchar NOT NULL,
     "passport_id" integer NOT NULL,
     "workplace_id" integer NOT NULL,
     "titles_id" integer NOT NULL,

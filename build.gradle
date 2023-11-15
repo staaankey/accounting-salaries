@@ -15,6 +15,11 @@ repositories {
     mavenCentral()
 }
 
+bootJar {
+    archiveFileName = 'deploy-demo.jar'
+    launchScript()
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -39,7 +44,7 @@ dependencies {
 
 
 
-    runtimeOnly('org.postgresql:postgresql')
+    implementation 'org.postgresql:postgresql:42.3.8'
 
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

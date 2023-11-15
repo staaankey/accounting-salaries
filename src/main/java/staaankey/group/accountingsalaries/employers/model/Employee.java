@@ -32,5 +32,7 @@ public class Employee {
     private int educationId;
     @Column(name = "department_id")
     private int departmentId;
+    @Column(name = "rntrc")
+    private String rntrc;
 
 }
