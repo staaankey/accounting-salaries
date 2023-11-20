@@ -8,6 +8,8 @@ import staaankey.group.accountingsalaries.educations.model.Education;
 import staaankey.group.accountingsalaries.educations.repository.EducationRepository;
 import staaankey.group.accountingsalaries.educations.web.dto.EducationDto;
 
+import javax.transaction.Transactional;
+
 @Service
 public class EducationService {
     private final EducationRepository educationRepository;
@@ -33,6 +35,7 @@ public class EducationService {
         return educationRepository.findEducationById(id);
     }
 
+    @Transactional
     public int deleteEducationById(int id) throws EducationNotFindEducation {
         if (educationRepository.delete(id) == 0) {
             throw new EducationNotFindEducation("Education not found!");

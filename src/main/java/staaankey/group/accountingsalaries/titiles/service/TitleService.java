@@ -8,6 +8,8 @@ import staaankey.group.accountingsalaries.titiles.exception.TitleNotSavedExcepti
 import staaankey.group.accountingsalaries.titiles.repos.TitleRepository;
 import staaankey.group.accountingsalaries.titiles.web.dto.TitleDto;
 
+import javax.transaction.Transactional;
+
 @Service
 public class TitleService {
     private final TitleRepository titleRepository;
@@ -22,6 +24,7 @@ public class TitleService {
         return titleRepository.save(title);
     }
 
+    @Transactional
     public Long delete(Long id) throws TitleNotFoundException {
         if (titleRepository.deleteTitleById(id) == 0) {
             throw new TitleNotFoundException("Not found");

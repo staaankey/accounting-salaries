@@ -7,6 +7,7 @@ import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFou
 import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.repository.DepartmentRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class DepartmentService {
         return departmentRepository.save(department);
     }
 
+    @Transactional
     public Long deleteDepartment(Long departmentId) throws DepartmentNotFoundException {
         if(departmentRepository.deleteDepartmentById(departmentId) == 0) {
             throw new DepartmentNotFoundException("Department not found!");

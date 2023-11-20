@@ -8,6 +8,7 @@ import staaankey.group.accountingsalaries.registration.exception.UserNotFoundExc
 import staaankey.group.accountingsalaries.registration.repos.UserRepository;
 import staaankey.group.accountingsalaries.registration.web.dto.UserDto;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -27,6 +28,7 @@ public class PostgresUserDetailsService {
         return userRepository.findAll();
     }
 
+    @Transactional
     public Long deleteUser(Long userId) throws UserNotFoundException {
         if (userRepository.deleteUserById(userId) == 0) {
             throw new UserNotFoundException("User not found");

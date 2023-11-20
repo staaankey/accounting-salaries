@@ -8,6 +8,8 @@ import staaankey.group.accountingsalaries.employers.model.Employee;
 import staaankey.group.accountingsalaries.employers.repository.EmployeeRepository;
 import staaankey.group.accountingsalaries.employers.web.dto.EmployeeDto;
 
+import javax.transaction.Transactional;
+
 @Service
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
@@ -27,6 +29,7 @@ public class EmployeeService {
         }
     }
 
+    @Transactional
     public Long delete(Long employeeId) throws EmployeeNotSavedException {
         if (employeeRepository.deleteEmployeeByEmployeeId(employeeId) == 0) {
             throw new EmployeeNotSavedException("Employee not presented in database!");

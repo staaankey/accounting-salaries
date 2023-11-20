@@ -8,6 +8,8 @@ import staaankey.group.accountingsalaries.passports.model.Passport;
 import staaankey.group.accountingsalaries.passports.repository.PassportRepository;
 import staaankey.group.accountingsalaries.passports.web.dto.PassportDto;
 
+import javax.transaction.Transactional;
+
 @Service
 public class PassportService {
     private final PassportRepository passportRepository;
@@ -23,6 +25,7 @@ public class PassportService {
         return passportRepository.save(passport);
     }
 
+    @Transactional
     public Long delete(Long passportId) throws PassportNotFoundException {
         if (passportRepository.deletePassportById(passportId) == 0) {
             throw new PassportNotFoundException("Passport not found!");
