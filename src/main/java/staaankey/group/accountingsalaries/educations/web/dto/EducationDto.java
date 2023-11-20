@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.security.educations.web.dto;
+package staaankey.group.accountingsalaries.educations.web.dto;
 
 public class EducationDto {
     private String degree;

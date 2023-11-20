@@ -10,7 +10,8 @@ import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.service.DepartmentService;
 import staaankey.group.accountingsalaries.departments.web.dto.DepartmentDto;
 
-@RestController("/departments")
+@RestController
+@RequestMapping("/departments")
 @CrossOrigin("http://localhost:3000")
 public class DepartController {
     private final DepartmentService departmentService;
@@ -19,34 +20,34 @@ public class DepartController {
         this.departmentService = departmentService;
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<?> saveDepartment(@RequestBody DepartmentDto department) {
         return new ResponseEntity<>(departmentService.saveDepartment(convertToEntity(department)), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteDepartment(@RequestParam Long departmentId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDepartment(@PathVariable long id) {
         try {
-            return new ResponseEntity<>(departmentService.deleteDepartment(departmentId), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(departmentService.deleteDepartment(id), HttpStatus.NO_CONTENT);
         } catch (DepartmentNotFoundException e) {
             return new ResponseEntity<>(
-                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + departmentId + " not found"), HttpStatus.NOT_FOUND);
+                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + id + " not found"), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<?> getDepartments() {
         return new ResponseEntity<>(departmentService.getDepartments(), HttpStatus.OK);
     }
 
-    @GetMapping("/findById")
-    public ResponseEntity<?> getDepartmentById(@RequestParam Long departmentId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getDepartmentById(@PathVariable Long id) {
         try {
-            Department department = departmentService.findDepartmentById(departmentId);
+            Department department = departmentService.findDepartmentById(id);
             return new ResponseEntity<>(department, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(
-                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + departmentId + " not found"), HttpStatus.NOT_FOUND);
+                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + id + " not found"), HttpStatus.NOT_FOUND);
         }
     }
 

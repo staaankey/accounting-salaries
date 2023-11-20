@@ -9,7 +9,8 @@ import staaankey.group.accountingsalaries.registration.exception.UserNotFoundExc
 import staaankey.group.accountingsalaries.registration.service.PostgresUserDetailsService;
 import staaankey.group.accountingsalaries.registration.web.dto.UserDto;
 
-@RestController("/users")
+@RestController
+@RequestMapping("/users")
 @CrossOrigin("http://localhost:3000")
 public class UserController {
     private final PostgresUserDetailsService userService;
@@ -18,24 +19,24 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/findAllUsers")
+    @GetMapping
     public ResponseEntity<?> findAll() {
         return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteUser")
-    public ResponseEntity<?> deleteUser(@RequestParam Long userId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         try {
-            return new ResponseEntity<>(userService.deleteUser(userId), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.NO_CONTENT);
         } catch (UserNotFoundException e) {
             return new ResponseEntity<>(
                     new AppError(
-                            HttpStatus.NOT_FOUND.value(), "User with id " + userId + " not found"), HttpStatus.NOT_FOUND
+                            HttpStatus.NOT_FOUND.value(), "User with id " + id + " not found"), HttpStatus.NOT_FOUND
             );
         }
     }
 
-    @PostMapping("/saveUser")
+    @PostMapping
     public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
         try {
             return new ResponseEntity<>(userService.saveUser(userDto), HttpStatus.CREATED);
@@ -47,14 +48,14 @@ public class UserController {
         }
     }
 
-    @GetMapping("/findByUserId")
-    public ResponseEntity<?> findUserById(Long userId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findUserById(Long id) {
         try {
-            return new ResponseEntity<>(userService.findUserById(userId), HttpStatus.OK);
+            return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
         } catch (UserNotFoundException e) {
             return new ResponseEntity<>(
                     new AppError(
-                            HttpStatus.NOT_FOUND.value(), "User with id " + userId + " not found"), HttpStatus.NOT_FOUND
+                            HttpStatus.NOT_FOUND.value(), "User with id " + id + " not found"), HttpStatus.NOT_FOUND
             );
         }
     }

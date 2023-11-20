@@ -20,7 +20,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping("/new")
+    @PostMapping()
     public ResponseEntity<?> saveEmployee(@RequestBody EmployeeDto employeeDto) {
         try {
             return new ResponseEntity<>(employeeService.save(employeeDto), HttpStatus.CREATED);
@@ -29,23 +29,23 @@ public class EmployeeController {
         }
     }
 
-    @DeleteMapping("/deleteEmployee/{employeeId}")
-    public ResponseEntity<?> deleteEmployee(@PathVariable Long employeeId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
         try {
-            return new ResponseEntity<>(employeeService.delete(employeeId), HttpStatus.OK);
+            return new ResponseEntity<>(employeeService.delete(id), HttpStatus.OK);
         } catch (EmployeeNotSavedException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Employee with %d not presented in database!".formatted(employeeId)), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Employee with %d not presented in database!".formatted(id)), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("find/{employeeId}")
-    public ResponseEntity<?> findEmployeeById(@PathVariable Long employeeId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findEmployeeById(@PathVariable Long id) {
         try {
-            return new ResponseEntity<>(employeeService.findByEmployeeId(employeeId), HttpStatus.OK);
+            return new ResponseEntity<>(employeeService.findByEmployeeId(id), HttpStatus.OK);
         } catch (EmployeeNotFoundException e) {
             return new ResponseEntity<>(
                     new AppError(
-                            HttpStatus.NOT_FOUND.value(), "Employee with id %d not found".formatted(employeeId)
+                            HttpStatus.NOT_FOUND.value(), "Employee with id %d not found".formatted(id)
                     ), HttpStatus.NOT_FOUND);
         }
     }

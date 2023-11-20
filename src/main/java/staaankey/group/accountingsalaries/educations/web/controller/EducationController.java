@@ -1,13 +1,13 @@
-package staaankey.group.accountingsalaries.security.educations.web.controller;
+package staaankey.group.accountingsalaries.educations.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import staaankey.group.accountingsalaries.departments.exception.AppError;
-import staaankey.group.accountingsalaries.security.educations.exceptions.EducationNotFindEducation;
-import staaankey.group.accountingsalaries.security.educations.exceptions.EducationNotSavedException;
-import staaankey.group.accountingsalaries.security.educations.service.EducationService;
-import staaankey.group.accountingsalaries.security.educations.web.dto.EducationDto;
+import staaankey.group.accountingsalaries.educations.exceptions.EducationNotFindEducation;
+import staaankey.group.accountingsalaries.educations.exceptions.EducationNotSavedException;
+import staaankey.group.accountingsalaries.educations.service.EducationService;
+import staaankey.group.accountingsalaries.educations.web.dto.EducationDto;
 
 @RestController
 @RequestMapping("/educations")
@@ -19,7 +19,7 @@ public class EducationController {
     }
 
 
-    @PostMapping("/new")
+    @PostMapping
     public ResponseEntity<?> saveEducation(@RequestBody EducationDto dto) {
         try {
             return new ResponseEntity<>(educationService.save(dto), HttpStatus.CREATED);
@@ -28,7 +28,7 @@ public class EducationController {
         }
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findEducationById(@PathVariable int id) {
         try {
             return new ResponseEntity<>(educationService.findEducationById(id), HttpStatus.OK);
@@ -40,7 +40,7 @@ public class EducationController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEducationById(@PathVariable int id) {
         try {
             return new ResponseEntity<>(educationService.deleteEducationById(id), HttpStatus.OK);

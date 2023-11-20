@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.security.educations.exceptions;
+package staaankey.group.accountingsalaries.educations.exceptions;
 
 
 public class EducationNotSavedException extends Exception {

@@ -19,7 +19,7 @@ public class TitleController {
         this.titleService = titleService;
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<?> saveTitle(@RequestBody TitleDto titleDto) {
         try {
             return new ResponseEntity<>(titleService.save(titleDto), HttpStatus.CREATED);
@@ -30,7 +30,7 @@ public class TitleController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTitle(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(titleService.delete(id), HttpStatus.OK);
@@ -42,7 +42,7 @@ public class TitleController {
         }
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findTitle(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(titleService.findById(id), HttpStatus.OK);

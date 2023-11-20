@@ -1,12 +1,12 @@
-package staaankey.group.accountingsalaries.security.educations.service;
+package staaankey.group.accountingsalaries.educations.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import staaankey.group.accountingsalaries.security.educations.exceptions.EducationNotFindEducation;
-import staaankey.group.accountingsalaries.security.educations.exceptions.EducationNotSavedException;
-import staaankey.group.accountingsalaries.security.educations.model.Education;
-import staaankey.group.accountingsalaries.security.educations.repository.EducationRepository;
-import staaankey.group.accountingsalaries.security.educations.web.dto.EducationDto;
+import staaankey.group.accountingsalaries.educations.exceptions.EducationNotFindEducation;
+import staaankey.group.accountingsalaries.educations.exceptions.EducationNotSavedException;
+import staaankey.group.accountingsalaries.educations.model.Education;
+import staaankey.group.accountingsalaries.educations.repository.EducationRepository;
+import staaankey.group.accountingsalaries.educations.web.dto.EducationDto;
 
 @Service
 public class EducationService {

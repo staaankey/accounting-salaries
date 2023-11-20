@@ -1,8 +1,8 @@
-package staaankey.group.accountingsalaries.security.educations.util;
+package staaankey.group.accountingsalaries.educations.util;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import staaankey.group.accountingsalaries.security.educations.model.Education;
+import staaankey.group.accountingsalaries.educations.model.Education;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

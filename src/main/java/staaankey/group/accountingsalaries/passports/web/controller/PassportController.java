@@ -9,7 +9,8 @@ import staaankey.group.accountingsalaries.passports.exception.PassportNotFoundEx
 import staaankey.group.accountingsalaries.passports.service.PassportService;
 import staaankey.group.accountingsalaries.passports.web.dto.PassportDto;
 
-@RestController("/passports")
+@RestController
+@RequestMapping("/passports")
 public class PassportController {
     private final PassportService passportService;
 
@@ -18,7 +19,7 @@ public class PassportController {
     }
 
 
-    @PostMapping("/savePassport")
+    @PostMapping
     public ResponseEntity<?> savePassport(@RequestBody PassportDto passportDto) {
         try {
             return new ResponseEntity<>(passportService.save(passportDto), HttpStatus.CREATED);
@@ -28,23 +29,23 @@ public class PassportController {
     }
 
 
-    @DeleteMapping("/deletePassport/{passportId}")
-    public ResponseEntity<?> deletePassport(@PathVariable Long passportId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePassport(@PathVariable Long id) {
         try {
-            return new ResponseEntity<>(passportService.delete(passportId), HttpStatus.OK);
+            return new ResponseEntity<>(passportService.delete(id), HttpStatus.OK);
         } catch (PassportNotFoundException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Passport with %d not presented in database!".formatted(passportId)), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Passport with %d not presented in database!".formatted(id)), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/find/{passportId}")
-    public ResponseEntity<?> findByPassportId(@PathVariable Long passportId) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findByPassportId(@PathVariable Long id) {
         try {
-            return new ResponseEntity<>(passportService.findByPassportId(passportId), HttpStatus.OK);
+            return new ResponseEntity<>(passportService.findByPassportId(id), HttpStatus.OK);
         } catch (PassportNotFoundException e) {
             return new ResponseEntity<>(
                     new AppError(
-                            HttpStatus.NOT_FOUND.value(), "Passport with id %d not found".formatted(passportId)
+                            HttpStatus.NOT_FOUND.value(), "Passport with id %d not found".formatted(id)
                     ), HttpStatus.NOT_FOUND);
         }
     }
