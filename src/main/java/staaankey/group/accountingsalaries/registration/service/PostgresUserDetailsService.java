@@ -1,5 +1,9 @@
 package staaankey.group.accountingsalaries.registration.service;
 
+import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.registration.entity.User;
@@ -11,8 +15,10 @@ import staaankey.group.accountingsalaries.registration.web.dto.UserDto;
 import javax.transaction.Transactional;
 import java.util.List;
 
+import static org.springframework.security.core.userdetails.User.withUsername;
+
 @Service
-public class PostgresUserDetailsService {
+public class PostgresUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -37,6 +43,7 @@ public class PostgresUserDetailsService {
         }
     }
 
+
     public User saveUser(UserDto user) throws UserAlreadyExistException {
         return userRepository.save(convertToEntity(user));
     }
@@ -45,26 +52,25 @@ public class PostgresUserDetailsService {
         return userRepository.findUserById(id);
     }
 
-    public Boolean loginUser(UserDto user) {
-        User loginUser = userRepository.findUserByLogin(user.getLogin());
-
-        if (loginUser != null) {
-            String password = user.getPassword();
-            String encodedPassword = loginUser.getPassword();
-            Boolean isPwdRigth = passwordEncoder.matches(password, encodedPassword);
-            if (isPwdRigth) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
     public User convertToEntity(UserDto dto) {
         User user = new User();
         user.setLogin(dto.getLogin());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         return user;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findUserByLogin(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found!");
+        }
+
+        UserBuilder userBuilder = withUsername(user.getLogin());
+        userBuilder.password(user.getPassword());
+        userBuilder.roles("ADMIN");
+
+        return userBuilder.build();
     }
 }

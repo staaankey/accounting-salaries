@@ -59,9 +59,4 @@ public class UserController {
             );
         }
     }
-
-    @PostMapping("/login")
-    public Boolean loginUser(@RequestBody UserDto userDto) {
-        return userService.loginUser(userDto);
-    }
 }

@@ -1,12 +1,20 @@
 package staaankey.group.accountingsalaries.salaries.controller;
 
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import staaankey.group.accountingsalaries.employers.model.Employee;
 
 @RestController
+@RequestMapping("/salaries")
 public class SalaryController {
-    public boolean defaultPaymentByMonth(@RequestParam Employee employeeId) {
-        return true;
+
+    @GetMapping("{/{employeeId}")
+    public int defaultPaymentByMonth(@PathVariable int employeeId) {
+        return 0;
     }
+
+    public int getTaxes(int employeeId) {
+        return 0;
+    }
+
+
 }

@@ -1,6 +1,9 @@
 package staaankey.group.accountingsalaries.employers.service;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.employers.exceptions.EmployeeNotFoundException;
 import staaankey.group.accountingsalaries.employers.exceptions.EmployeeNotSavedException;
@@ -11,7 +14,7 @@ import staaankey.group.accountingsalaries.employers.web.dto.EmployeeDto;
 import javax.transaction.Transactional;
 
 @Service
-public class EmployeeService {
+public class EmployeeService{
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
