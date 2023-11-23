@@ -12,6 +12,8 @@ public class SalaryController {
         return 0;
     }
 
+
+    
     public int getTaxes(int employeeId) {
         return 0;
     }
