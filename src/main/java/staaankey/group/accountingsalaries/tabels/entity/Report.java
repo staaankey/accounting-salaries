@@ -32,6 +32,7 @@ public class Report {
         return id == report.id;
     }
 
+
     @Override
     public int hashCode() {
         return (int) (id ^ (id >>> 32));
