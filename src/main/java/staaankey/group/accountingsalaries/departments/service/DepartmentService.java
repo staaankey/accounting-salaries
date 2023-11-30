@@ -7,7 +7,7 @@ import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFou
 import staaankey.group.accountingsalaries.departments.model.Department;
 import staaankey.group.accountingsalaries.departments.repository.DepartmentRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 @Service

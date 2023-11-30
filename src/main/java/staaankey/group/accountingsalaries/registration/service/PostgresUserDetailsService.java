@@ -12,7 +12,7 @@ import staaankey.group.accountingsalaries.registration.exception.UserNotFoundExc
 import staaankey.group.accountingsalaries.registration.repos.UserRepository;
 import staaankey.group.accountingsalaries.registration.web.dto.UserDto;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 import static org.springframework.security.core.userdetails.User.withUsername;

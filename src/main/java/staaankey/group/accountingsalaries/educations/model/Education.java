@@ -1,8 +1,7 @@
 package staaankey.group.accountingsalaries.educations.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.*;
+
 
 @Entity(name = "educations")
 public class Education {

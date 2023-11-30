@@ -11,7 +11,7 @@ import staaankey.group.accountingsalaries.employers.model.Employee;
 import staaankey.group.accountingsalaries.employers.repository.EmployeeRepository;
 import staaankey.group.accountingsalaries.employers.web.dto.EmployeeDto;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 @Service
 public class EmployeeService{

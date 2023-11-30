@@ -2,7 +2,7 @@ package staaankey.group.accountingsalaries.employers.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 
 @Entity(name = "employers")
@@ -34,5 +34,4 @@ public class Employee {
     private int departmentId;
     @Column(name = "rntrc")
     private String rntrc;
-
 }

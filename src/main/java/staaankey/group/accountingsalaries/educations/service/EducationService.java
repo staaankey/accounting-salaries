@@ -1,5 +1,6 @@
 package staaankey.group.accountingsalaries.educations.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import staaankey.group.accountingsalaries.educations.exceptions.EducationNotFindEducation;
@@ -8,7 +9,6 @@ import staaankey.group.accountingsalaries.educations.model.Education;
 import staaankey.group.accountingsalaries.educations.repository.EducationRepository;
 import staaankey.group.accountingsalaries.educations.web.dto.EducationDto;
 
-import javax.transaction.Transactional;
 
 @Service
 public class EducationService {

@@ -8,7 +8,7 @@ import staaankey.group.accountingsalaries.passports.model.Passport;
 import staaankey.group.accountingsalaries.passports.repository.PassportRepository;
 import staaankey.group.accountingsalaries.passports.web.dto.PassportDto;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 @Service
 public class PassportService {

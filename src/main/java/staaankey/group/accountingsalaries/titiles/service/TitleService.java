@@ -8,7 +8,7 @@ import staaankey.group.accountingsalaries.titiles.exception.TitleNotSavedExcepti
 import staaankey.group.accountingsalaries.titiles.repos.TitleRepository;
 import staaankey.group.accountingsalaries.titiles.web.dto.TitleDto;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 @Service
 public class TitleService {
