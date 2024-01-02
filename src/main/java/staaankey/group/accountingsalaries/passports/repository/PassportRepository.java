@@ -9,4 +9,6 @@ import staaankey.group.accountingsalaries.passports.model.Passport;
 public interface PassportRepository extends JpaRepository<Passport, Long> {
     Long deletePassportById(Long id);
     Passport findPassportById(Long id);
+    Passport findPassportBySeries(String series);
+    Boolean deletePassportBySeries(String series);
 }

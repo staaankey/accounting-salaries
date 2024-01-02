@@ -27,25 +27,23 @@ public class PassportController {
             return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Passport " + passportDto.toString() + "not created!"), HttpStatus.NOT_FOUND);
         }
     }
-
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePassport(@PathVariable Long id) {
+    @DeleteMapping("/{series}")
+    public ResponseEntity<?> deletePassportBySeries(@PathVariable String series) {
         try {
-            return new ResponseEntity<>(passportService.delete(id), HttpStatus.OK);
+            return new ResponseEntity<>(passportService.deletePassportBySeries(series), HttpStatus.OK);
         } catch (PassportNotFoundException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Passport with %d not presented in database!".formatted(id)), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), "Passport with %s not presented in database!".formatted(series)), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findByPassportId(@PathVariable Long id) {
+    @GetMapping("/{series}")
+    public ResponseEntity<?> findPassportBySeries(@PathVariable String series) {
         try {
-            return new ResponseEntity<>(passportService.findByPassportId(id), HttpStatus.OK);
+            return new ResponseEntity<>(passportService.deletePassportBySeries(series), HttpStatus.OK);
         } catch (PassportNotFoundException e) {
             return new ResponseEntity<>(
                     new AppError(
-                            HttpStatus.NOT_FOUND.value(), "Passport with id %d not found".formatted(id)
+                            HttpStatus.NOT_FOUND.value(), "Passport with id %s not found".formatted(series)
                     ), HttpStatus.NOT_FOUND);
         }
     }

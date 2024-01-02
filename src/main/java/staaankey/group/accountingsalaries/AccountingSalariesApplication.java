@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-@EnableJpaRepositories("staaankey.group")
+@EnableJpaRepositories("staaankey.group.*")
 @EntityScan("staaankey.group.*")
 public class AccountingSalariesApplication {
 

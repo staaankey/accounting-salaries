@@ -41,8 +41,11 @@ public class EmployeeService{
         }
     }
 
-
     public Employee findByEmployeeId(Long employeeId) throws EmployeeNotFoundException {
         return employeeRepository.findEmployeeByEmployeeId(employeeId);
+    }
+
+    public Employee findEmployeeByRntrc(String rntrc) {
+        return employeeRepository.findEmployeeByRntrc(rntrc);
     }
 }

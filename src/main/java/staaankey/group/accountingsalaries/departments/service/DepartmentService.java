@@ -38,4 +38,8 @@ public class DepartmentService {
     public Department findDepartmentById(Long departmentId) throws DepartmentNotFoundException {
         return departmentRepository.findDepartmentById(departmentId);
     }
+
+    public Department findDepartmentByName(String name) {
+        return departmentRepository.findDepartmentByName(name);
+    }
 }
