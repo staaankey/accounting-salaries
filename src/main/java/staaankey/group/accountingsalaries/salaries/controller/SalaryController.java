@@ -7,7 +7,7 @@ import staaankey.group.accountingsalaries.employers.model.Employee;
 @RequestMapping("/salaries")
 public class SalaryController {
 
-    @GetMapping("{/{employeeId}")
+    @GetMapping("{employeeId}")
     public int defaultPaymentByMonth(@PathVariable int employeeId) {
         return 0;
     }

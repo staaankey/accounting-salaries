@@ -20,7 +20,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> saveEmployee(@RequestBody EmployeeDto employeeDto) {
         try {
             return new ResponseEntity<>(employeeService.save(employeeDto), HttpStatus.CREATED);
@@ -50,8 +50,8 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping("/{rntrc}")
-    public ResponseEntity<?> findEmployeeByRntrc(@PathVariable String rntrc) {
+    @GetMapping("/rntrc")
+    public ResponseEntity<?> findEmployeeByRntrc(@RequestParam String rntrc) {
         return new ResponseEntity<>(employeeService.findEmployeeByRntrc(rntrc), HttpStatus.OK);
     }
 }
