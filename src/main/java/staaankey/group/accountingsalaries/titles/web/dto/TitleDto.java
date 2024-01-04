@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.titiles.web.dto;
+package staaankey.group.accountingsalaries.titles.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

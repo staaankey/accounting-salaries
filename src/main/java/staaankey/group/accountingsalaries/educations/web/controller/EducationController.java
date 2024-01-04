@@ -24,31 +24,19 @@ public class EducationController {
         try {
             return new ResponseEntity<>(educationService.save(dto), HttpStatus.CREATED);
         } catch (EducationNotSavedException e) {
-            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(), String.format("Education with series %s and diploma number %s not saved!", dto.getDiplomaSeries(), dto.getDegree())), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
+                    String.format("Education with series %s and diploma number %s not saved!", dto.getDiplomaSeries(), dto.getDegree())), HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findEducationById(@PathVariable int id) {
-        try {
-            return new ResponseEntity<>(educationService.findEducationById(id), HttpStatus.OK);
-        } catch (EducationNotFindEducation e) {
-            return new ResponseEntity<>(
-                    new AppError(
-                            HttpStatus.NOT_FOUND.value(), "Education with id %d not found".formatted(id)
-                    ), HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/{number}")
+    public ResponseEntity<?> findEducationByDiplomaNumber(@PathVariable Integer number) {
+        return new ResponseEntity<>(educationService.findByDiplomaNumber(number), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEducationById(@PathVariable int id) {
-        try {
-            return new ResponseEntity<>(educationService.deleteEducationById(id), HttpStatus.OK);
-        } catch (EducationNotFindEducation e) {
-            return new ResponseEntity<>(
-                    new AppError(
-                            HttpStatus.NOT_FOUND.value(), "Education with id %d not found".formatted(id)
-                    ), HttpStatus.NOT_FOUND);
-        }
+    @DeleteMapping("/{number}")
+    public ResponseEntity<?> deleteEducationByDiplomaNumber(@PathVariable Integer number) {
+        educationService.deleteEducationByDiplomaNumber(number);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -49,4 +49,9 @@ public class EmployeeController {
                     ), HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/{rntrc}")
+    public ResponseEntity<?> findEmployeeByRntrc(@PathVariable String rntrc) {
+        return new ResponseEntity<>(employeeService.findEmployeeByRntrc(rntrc), HttpStatus.OK);
+    }
 }

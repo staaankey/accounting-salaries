@@ -9,6 +9,8 @@ import staaankey.group.accountingsalaries.educations.model.Education;
 import staaankey.group.accountingsalaries.educations.repository.EducationRepository;
 import staaankey.group.accountingsalaries.educations.web.dto.EducationDto;
 
+import java.util.Optional;
+
 
 @Service
 public class EducationService {
@@ -19,7 +21,7 @@ public class EducationService {
         this.educationRepository = educationRepository;
     }
 
-    public int save(EducationDto dto) throws EducationNotSavedException {
+    public Education save(EducationDto dto) throws EducationNotSavedException {
         Education education = new Education();
         BeanUtils.copyProperties(dto, education);
         try {
@@ -30,17 +32,12 @@ public class EducationService {
         }
 
     }
-
-    public Education findEducationById(int id) throws EducationNotFindEducation {
-        return educationRepository.findEducationById(id);
+    public Education findByDiplomaNumber(Integer number) {
+        return educationRepository.findByDiplomaNumber(number);
     }
 
     @Transactional
-    public int deleteEducationById(int id) throws EducationNotFindEducation {
-        if (educationRepository.delete(id) == 0) {
-            throw new EducationNotFindEducation("Education not found!");
-        } else {
-            return educationRepository.delete(id);
-        }
+    public void deleteEducationByDiplomaNumber(Integer number) {
+        educationRepository.deleteByDiplomaNumber(number);
     }
 }

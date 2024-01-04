@@ -9,4 +9,5 @@ import staaankey.group.accountingsalaries.departments.model.Department;
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
     Long deleteDepartmentById(Long id);
     Department findDepartmentById(Long id);
+    Department findDepartmentByName(String name);
 }

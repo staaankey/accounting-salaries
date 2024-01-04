@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.titiles.entity;
+package staaankey.group.accountingsalaries.titles.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

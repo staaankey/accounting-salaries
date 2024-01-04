@@ -3,6 +3,7 @@ package staaankey.group.accountingsalaries.departments.web.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import staaankey.group.accountingsalaries.departments.exception.AppError;
 import staaankey.group.accountingsalaries.departments.exception.DepartmentNotFoundException;
@@ -48,6 +49,17 @@ public class DepartController {
         } catch (Exception e) {
             return new ResponseEntity<>(
                     new AppError(HttpStatus.NOT_FOUND.value(), "Department with id " + id + " not found"), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<?> getDepartmentByName(@PathVariable String name) {
+        try {
+            Department department = departmentService.findDepartmentByName(name);
+            return new ResponseEntity<>(department, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(
+                    new AppError(HttpStatus.NOT_FOUND.value(), "Department with name: " + name + "not found"), HttpStatus.NOT_FOUND);
         }
     }
 

@@ -1,12 +1,12 @@
-package staaankey.group.accountingsalaries.titiles.service;
+package staaankey.group.accountingsalaries.titles.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import staaankey.group.accountingsalaries.titiles.entity.Title;
-import staaankey.group.accountingsalaries.titiles.exception.TitleNotFoundException;
-import staaankey.group.accountingsalaries.titiles.exception.TitleNotSavedException;
-import staaankey.group.accountingsalaries.titiles.repos.TitleRepository;
-import staaankey.group.accountingsalaries.titiles.web.dto.TitleDto;
+import staaankey.group.accountingsalaries.titles.entity.Title;
+import staaankey.group.accountingsalaries.titles.exception.TitleNotFoundException;
+import staaankey.group.accountingsalaries.titles.exception.TitleNotSavedException;
+import staaankey.group.accountingsalaries.titles.repos.TitleRepository;
+import staaankey.group.accountingsalaries.titles.web.dto.TitleDto;
 
 import jakarta.transaction.Transactional;
 
@@ -35,5 +35,13 @@ public class TitleService {
 
     public Title findById(Long id) throws TitleNotFoundException {
         return titleRepository.findTitleById(id);
+    }
+
+    public Title findTitleBySerial(String serial) {
+        return titleRepository.findTitleBySerialNumber(serial);
+    }
+
+    public Boolean deleteTitleBySerial(String serial) {
+        return titleRepository.deleteTitleBySerialNumber(serial);
     }
 }

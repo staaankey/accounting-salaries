@@ -26,15 +26,11 @@ public class PassportService {
     }
 
     @Transactional
-    public Long delete(Long passportId) throws PassportNotFoundException {
-        if (passportRepository.deletePassportById(passportId) == 0) {
-            throw new PassportNotFoundException("Passport not found!");
-        } else {
-            return passportRepository.deletePassportById(passportId);
-        }
+    public Boolean deletePassportBySeries(String series) throws PassportNotFoundException {
+        return passportRepository.deletePassportBySeries(series);
     }
 
-    public Passport findByPassportId(Long passportId) throws PassportNotFoundException {
-        return passportRepository.findPassportById(passportId);
+    public Passport findPassportBySeries(String series) {
+        return passportRepository.findPassportBySeries(series);
     }
 }

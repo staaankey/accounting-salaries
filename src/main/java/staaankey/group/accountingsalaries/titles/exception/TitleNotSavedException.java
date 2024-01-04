@@ -1,4 +1,4 @@
-package staaankey.group.accountingsalaries.titiles.exception;
+package staaankey.group.accountingsalaries.titles.exception;
 
 public class TitleNotSavedException extends Exception {
     public TitleNotSavedException(String message) {

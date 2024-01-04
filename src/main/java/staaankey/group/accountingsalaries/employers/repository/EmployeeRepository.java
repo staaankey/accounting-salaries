@@ -9,5 +9,6 @@ import staaankey.group.accountingsalaries.employers.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Long deleteEmployeeByEmployeeId(Long id);
     Employee findEmployeeByEmployeeId(Long id);
+    Employee findEmployeeByRntrc(String rntrc);
 
 }
